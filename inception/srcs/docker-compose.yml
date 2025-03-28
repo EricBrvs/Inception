@@ -1,0 +1,62 @@
+volumes :
+  wordpress:
+    name: wordpress
+    driver: local
+    driver_opts:
+      device: /home/ebervas/data/wordpress
+      o: bind
+      type: none
+  mariadb:
+    name: mariadb
+    driver: local
+    driver_opts:
+      device: /home/ebervas/data/mariadb
+      o: bind
+      type: none
+services:
+  wordpress:
+    container_name: wordpress
+    build: ./requirements/wordpress/
+    networks:
+      - inception
+    volumes:
+      - wordpress:/var/www/html
+    depends_on:
+      - mariadb
+    expose:
+      - "9000"
+    env_file:
+      - .env
+    restart: unless-stopped
+
+  mariadb:
+    container_name: mariadb
+    build: ./requirements/mariadb/
+    networks:
+    - inception
+    volumes:
+    - mariadb:/var/lib/mysql
+    expose:
+    - "3306"
+    environment:
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    restart: unless-stopped
+
+  nginx:
+    container_name: nginx
+    build: ./requirements/nginx/
+    networks:
+      - inception
+    volumes:
+      - wordpress:/var/www/html
+    ports:
+      - "443:443"
+    depends_on:
+      - wordpress
+      - mariadb
+    restart: unless-stopped
+networks:
+  inception:
+    name: inception
+    driver: bridge
