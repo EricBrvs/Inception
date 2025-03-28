@@ -16,7 +16,11 @@ volumes :
 services:
   wordpress:
     container_name: wordpress
-    build: ./requirements/wordpress/
+    image: wordpress:latest
+    build:
+      context: ./requirements/wordpress/
+      tags:
+        - "wordpress:latest"
     networks:
       - inception
     volumes:
@@ -31,7 +35,11 @@ services:
 
   mariadb:
     container_name: mariadb
-    build: ./requirements/mariadb/
+    image: mariadb:latest
+    build:
+      context: ./requirements/mariadb
+      tags:
+        - "mariadb:latest"
     networks:
     - inception
     volumes:
@@ -39,13 +47,18 @@ services:
     expose:
     - "3306"
     environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     restart: unless-stopped
 
   nginx:
     container_name: nginx
-    build: ./requirements/nginx/
+    image: nginx:latest
+    build:
+      context: ./requirements/nginx/
+      tags:
+        - "nginx:latest"
     networks:
       - inception
     volumes:
