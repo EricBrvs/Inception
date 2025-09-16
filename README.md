@@ -24,7 +24,7 @@ Ce projet inclus inclut :
 - Mettre en place une **infrastructure web sécurisée** et fonctionnelle de bout en bout.  
 
 ---
-![Schéma architecture](Image_architecture.png)
+![Schéma architecture](assets/Image_architecture.png)
 
 ---
 
