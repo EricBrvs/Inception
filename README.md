@@ -6,7 +6,7 @@ Le projet **Inception** consiste à déployer une **infrastructure web complète
 
 ## Contenu du repository
 
-Ce repository inclut :  
+Ce projet inclus inclut :  
 
 - **Dockerfiles personnalisés** pour chaque service : NGINX, WordPress (avec php-fpm) et MariaDB.  
 - **Volumes Docker** pour stocker les fichiers WordPress et la base de données.  
@@ -24,5 +24,8 @@ Ce repository inclut :
 - Mettre en place une **infrastructure web sécurisée** et fonctionnelle de bout en bout.  
 
 ---
+![Schéma architecture](Image_architecture.png)
 
-> Ce projet montre ma capacité à concevoir, sécuriser et orchestrer des services web conteneurisés de manière professionnelle, tout en respectant les bonnes pratiques Docker et les contraintes pédagogiques de l’École 42.
+---
+
+> Ce projet m'a permit de développer ma capacité à concevoir, sécuriser et orchestrer des services web conteneurisés de manière professionnelle, tout en respectant les bonnes pratiques Docker et les contraintes pédagogiques de l’École 42.
